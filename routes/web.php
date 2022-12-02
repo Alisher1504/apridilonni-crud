@@ -19,4 +19,9 @@ Route::get('/', [CrudController::class, 'index']);
 Route::get('/crud-create', [CrudController::class, 'crud_create']);
 Route::post('/store', [CrudController::class, 'crud_store']);
 
+Route::get('/edit-crud/{id}', [CrudController::class, 'crud_edit']);
+Route::put('/store-update/{id}', [CrudController::class, 'crud_update']);
+
+Route::get('/delete/{id}', [CrudController::class, 'crud_delete']);
+
 Auth::routes();

@@ -33,7 +33,32 @@ class CrudController extends Controller
 
         $data->save();
 
-        return redirect('crud')->with('status', 'crud create successfully');
+        return redirect('/')->with('status', 'crud create successfully');
+
+    }
+
+    public function crud_edit($id) {
+        $edit = Post::find($id);
+        return view('crud.edit', compact('edit'));
+    }
+
+    public function crud_update(Request $request, $id){
+
+        $data = Post::find($id);
+        $data->name = $request->name;
+        $data->email = $request->email;
+        $data->update();
+
+        return redirect('/')->with('status', 'updata crud successfully');
+
+    }
+
+    public function crud_delete($id) {
+
+        $delete = Post::find($id);
+        $delete->delete();
+
+        return redirect('/')->with('status', 'delete crud successfully');
 
     }
 
